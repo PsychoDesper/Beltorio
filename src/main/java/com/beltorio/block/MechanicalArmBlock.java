@@ -93,17 +93,19 @@ public class MechanicalArmBlock extends Block implements BlockEntityProvider, Wa
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        if (world.isClient()) {
+        if (type != Beltorio.MECHANICAL_ARM_BLOCK_ENTITY) {
             return null;
         }
-        return type == Beltorio.MECHANICAL_ARM_BLOCK_ENTITY
-                ? (tickWorld, tickPos, tickState, blockEntity) ->
-                    MechanicalArmBlockEntity.tick(tickWorld, tickPos, tickState, (MechanicalArmBlockEntity) blockEntity)
-                : null;
+        if (world.isClient()) {
+            return (tickWorld, tickPos, tickState, blockEntity) ->
+                    MechanicalArmBlockEntity.clientTick(tickWorld, tickPos, tickState, (MechanicalArmBlockEntity) blockEntity);
+        }
+        return (tickWorld, tickPos, tickState, blockEntity) ->
+                MechanicalArmBlockEntity.tick(tickWorld, tickPos, tickState, (MechanicalArmBlockEntity) blockEntity);
     }
 
     @Override
     protected BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
+        return BlockRenderType.ENTITYBLOCK_ANIMATED;
     }
 }
