@@ -1,0 +1,23 @@
+# Compiled files
+*.class
+build/
+out/
+
+# Gradle
+.gradle/
+
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/settings.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Fabric
+run/
+remappedSrc/

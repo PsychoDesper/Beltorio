@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Minecraft Client",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/run",
+            "console": "integratedTerminal",
+            "stopOnEntry": false,
+            "mainClass": "net.fabricmc.devlaunchinjector.Main",
+            "vmArgs": "-Dfabric.development=true -Dfabric.remapClasspathFile=${workspaceFolder}/.gradle/loom-cache/remapClasspath.txt -Dlog4j.configurationFile=${workspaceFolder}/.gradle/loom-cache/log4j.xml",
+            "args": "--assetIndex 1.21.1 --assetsDir ${userHome}/.gradle/caches/fabric-loom/assets"
+        }
+    ]
+}

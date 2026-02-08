@@ -1,0 +1,23 @@
+{
+    "schemaVersion": 1,
+    "id": "beltorio",
+    "version": "${version}",
+    "name": "Beltorio",
+    "description": "Factorio-style conveyor belts for Minecraft",
+    "authors": ["Beltorio"],
+    "contact": {},
+    "license": "MIT",
+    "icon": "assets/beltorio/textures/block/conveyor_belt.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": ["com.beltorio.Beltorio"],
+        "client": ["com.beltorio.BeltorioClient"]
+    },
+    "mixins": ["beltorio.mixins.json"],
+    "depends": {
+        "fabricloader": ">=0.15.0",
+        "minecraft": "~1.21.1",
+        "java": ">=21",
+        "fabric-api": "*"
+    }
+}
