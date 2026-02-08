@@ -2,7 +2,6 @@ package com.beltorio.client;
 
 import com.beltorio.block.entity.MechanicalArmBlockEntity;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.LightmapTextureManager;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
@@ -19,7 +18,6 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.RotationAxis;
-import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 public class MechanicalArmBlockEntityRenderer implements BlockEntityRenderer<MechanicalArmBlockEntity> {
@@ -128,35 +126,34 @@ public class MechanicalArmBlockEntityRenderer implements BlockEntityRenderer<Mec
                          int light, int overlay,
                          float x0, float y0, float z0, float x1, float y1, float z1) {
         Matrix4f model = matrices.peek().getPositionMatrix();
-        Matrix3f normal = matrices.peek().getNormalMatrix();
 
         // North face (z=z0): UV [0,8,6,11]
-        drawQuad(model, normal, buffer, sprite, light, overlay,
+        drawQuad(model, buffer, sprite, light, overlay,
                 x1, y1, z0, x0, y1, z0, x0, y0, z0, x1, y0, z0,
                 0, 8, 6, 11, 0f, 0f, -1f);
 
         // South face (z=z1): UV [0,8,6,11]
-        drawQuad(model, normal, buffer, sprite, light, overlay,
+        drawQuad(model, buffer, sprite, light, overlay,
                 x0, y1, z1, x1, y1, z1, x1, y0, z1, x0, y0, z1,
                 0, 8, 6, 11, 0f, 0f, 1f);
 
         // East face (x=x1): UV [0,8,16,11]
-        drawQuad(model, normal, buffer, sprite, light, overlay,
+        drawQuad(model, buffer, sprite, light, overlay,
                 x1, y1, z1, x1, y1, z0, x1, y0, z0, x1, y0, z1,
                 0, 8, 16, 11, 1f, 0f, 0f);
 
         // West face (x=x0): UV [0,8,16,11]
-        drawQuad(model, normal, buffer, sprite, light, overlay,
+        drawQuad(model, buffer, sprite, light, overlay,
                 x0, y1, z0, x0, y1, z1, x0, y0, z1, x0, y0, z0,
                 0, 8, 16, 11, -1f, 0f, 0f);
 
         // Top face (y=y1): UV [0,8,6,16]
-        drawQuad(model, normal, buffer, sprite, light, overlay,
+        drawQuad(model, buffer, sprite, light, overlay,
                 x0, y1, z0, x1, y1, z0, x1, y1, z1, x0, y1, z1,
                 0, 8, 6, 16, 0f, 1f, 0f);
 
         // Bottom face (y=y0): UV [0,8,6,16]
-        drawQuad(model, normal, buffer, sprite, light, overlay,
+        drawQuad(model, buffer, sprite, light, overlay,
                 x0, y0, z1, x1, y0, z1, x1, y0, z0, x0, y0, z0,
                 0, 8, 6, 16, 0f, -1f, 0f);
     }
@@ -167,40 +164,39 @@ public class MechanicalArmBlockEntityRenderer implements BlockEntityRenderer<Mec
                          int tbU0, int tbV0, int tbU1, int tbV1,
                          int sU0, int sV0, int sU1, int sV1) {
         Matrix4f model = matrices.peek().getPositionMatrix();
-        Matrix3f normal = matrices.peek().getNormalMatrix();
 
         // North (z=z0)
-        drawQuad(model, normal, buffer, sprite, light, overlay,
+        drawQuad(model, buffer, sprite, light, overlay,
                 x1, y1, z0, x0, y1, z0, x0, y0, z0, x1, y0, z0,
                 sU0, sV0, sU1, sV1, 0f, 0f, -1f);
 
         // South (z=z1)
-        drawQuad(model, normal, buffer, sprite, light, overlay,
+        drawQuad(model, buffer, sprite, light, overlay,
                 x0, y1, z1, x1, y1, z1, x1, y0, z1, x0, y0, z1,
                 sU0, sV0, sU1, sV1, 0f, 0f, 1f);
 
         // East (x=x1)
-        drawQuad(model, normal, buffer, sprite, light, overlay,
+        drawQuad(model, buffer, sprite, light, overlay,
                 x1, y1, z1, x1, y1, z0, x1, y0, z0, x1, y0, z1,
                 sU0, sV0, sU1, sV1, 1f, 0f, 0f);
 
         // West (x=x0)
-        drawQuad(model, normal, buffer, sprite, light, overlay,
+        drawQuad(model, buffer, sprite, light, overlay,
                 x0, y1, z0, x0, y1, z1, x0, y0, z1, x0, y0, z0,
                 sU0, sV0, sU1, sV1, -1f, 0f, 0f);
 
         // Top (y=y1)
-        drawQuad(model, normal, buffer, sprite, light, overlay,
+        drawQuad(model, buffer, sprite, light, overlay,
                 x0, y1, z0, x1, y1, z0, x1, y1, z1, x0, y1, z1,
                 tbU0, tbV0, tbU1, tbV1, 0f, 1f, 0f);
 
         // Bottom (y=y0)
-        drawQuad(model, normal, buffer, sprite, light, overlay,
+        drawQuad(model, buffer, sprite, light, overlay,
                 x0, y0, z1, x1, y0, z1, x1, y0, z0, x0, y0, z0,
                 tbU0, tbV0, tbU1, tbV1, 0f, -1f, 0f);
     }
 
-    private void drawQuad(Matrix4f model, Matrix3f normal, VertexConsumer buffer, Sprite sprite,
+    private void drawQuad(Matrix4f model, VertexConsumer buffer, Sprite sprite,
                           int light, int overlay,
                           float x0, float y0, float z0,
                           float x1, float y1, float z1,
@@ -215,12 +211,12 @@ public class MechanicalArmBlockEntityRenderer implements BlockEntityRenderer<Mec
         float v1 = sprite.getFrameV(uvY1 / 16f);
 
         buffer.vertex(model, x0, y0, z0).color(255, 255, 255, 255).texture(u0, v0)
-                .overlay(overlay).light(light).normal(normal, nx, ny, nz);
+                .overlay(overlay).light(light).normal(nx, ny, nz);
         buffer.vertex(model, x1, y1, z1).color(255, 255, 255, 255).texture(u1, v0)
-                .overlay(overlay).light(light).normal(normal, nx, ny, nz);
+                .overlay(overlay).light(light).normal(nx, ny, nz);
         buffer.vertex(model, x2, y2, z2).color(255, 255, 255, 255).texture(u1, v1)
-                .overlay(overlay).light(light).normal(normal, nx, ny, nz);
+                .overlay(overlay).light(light).normal(nx, ny, nz);
         buffer.vertex(model, x3, y3, z3).color(255, 255, 255, 255).texture(u0, v1)
-                .overlay(overlay).light(light).normal(normal, nx, ny, nz);
+                .overlay(overlay).light(light).normal(nx, ny, nz);
     }
 }
