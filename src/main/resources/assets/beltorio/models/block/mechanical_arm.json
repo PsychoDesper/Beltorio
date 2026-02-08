@@ -1,0 +1,75 @@
+{
+    "parent": "minecraft:block/block",
+    "textures": {
+        "base": "beltorio:block/mechanical_arm",
+        "pillar": "beltorio:block/mechanical_arm",
+        "arm": "beltorio:block/mechanical_arm",
+        "claw": "beltorio:block/mechanical_arm",
+        "particle": "beltorio:block/mechanical_arm"
+    },
+    "elements": [
+        {
+            "name": "base",
+            "from": [1, 0, 1],
+            "to": [15, 4, 15],
+            "faces": {
+                "north": { "uv": [0, 8, 8, 12], "texture": "#base" },
+                "east":  { "uv": [0, 8, 8, 12], "texture": "#base" },
+                "south": { "uv": [0, 8, 8, 12], "texture": "#base" },
+                "west":  { "uv": [0, 8, 8, 12], "texture": "#base" },
+                "up":    { "uv": [0, 0, 8, 8], "texture": "#base" },
+                "down":  { "uv": [0, 0, 8, 8], "texture": "#base", "cullface": "down" }
+            }
+        },
+        {
+            "name": "pillar",
+            "from": [6, 4, 6],
+            "to": [10, 14, 10],
+            "faces": {
+                "north": { "uv": [8, 0, 12, 8], "texture": "#pillar" },
+                "east":  { "uv": [8, 0, 12, 8], "texture": "#pillar" },
+                "south": { "uv": [8, 0, 12, 8], "texture": "#pillar" },
+                "west":  { "uv": [8, 0, 12, 8], "texture": "#pillar" },
+                "up":    { "uv": [8, 0, 12, 4], "texture": "#pillar" }
+            }
+        },
+        {
+            "name": "arm",
+            "from": [5, 11, 0],
+            "to": [11, 14, 16],
+            "faces": {
+                "north": { "uv": [0, 8, 6, 11], "texture": "#arm", "cullface": "north" },
+                "east":  { "uv": [0, 8, 16, 11], "texture": "#arm" },
+                "south": { "uv": [0, 8, 6, 11], "texture": "#arm", "cullface": "south" },
+                "west":  { "uv": [0, 8, 16, 11], "texture": "#arm" },
+                "up":    { "uv": [0, 8, 6, 16], "texture": "#arm" },
+                "down":  { "uv": [0, 8, 6, 16], "texture": "#arm" }
+            }
+        },
+        {
+            "name": "output_claw",
+            "from": [6, 7, 14],
+            "to": [10, 11, 16],
+            "faces": {
+                "north": { "uv": [8, 8, 12, 12], "texture": "#claw" },
+                "east":  { "uv": [8, 8, 10, 12], "texture": "#claw" },
+                "south": { "uv": [8, 8, 12, 12], "texture": "#claw", "cullface": "south" },
+                "west":  { "uv": [8, 8, 10, 12], "texture": "#claw" },
+                "up":    { "uv": [8, 8, 12, 10], "texture": "#claw" },
+                "down":  { "uv": [8, 8, 12, 10], "texture": "#claw" }
+            }
+        },
+        {
+            "name": "input_back",
+            "from": [6, 11, 0],
+            "to": [10, 14, 2],
+            "faces": {
+                "north": { "uv": [0, 0, 4, 3], "texture": "#base", "cullface": "north" },
+                "east":  { "uv": [0, 0, 2, 3], "texture": "#base" },
+                "west":  { "uv": [0, 0, 2, 3], "texture": "#base" },
+                "up":    { "uv": [0, 0, 4, 2], "texture": "#base" },
+                "down":  { "uv": [0, 0, 4, 2], "texture": "#base" }
+            }
+        }
+    ]
+}

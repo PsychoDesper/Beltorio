@@ -1,7 +1,9 @@
 package com.beltorio;
 
 import com.beltorio.block.ConveyorBeltBlock;
+import com.beltorio.block.MechanicalArmBlock;
 import com.beltorio.block.entity.ConveyorBeltBlockEntity;
+import com.beltorio.block.entity.MechanicalArmBlockEntity;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
@@ -42,10 +44,33 @@ public class Beltorio implements ModInitializer {
             FabricBlockEntityTypeBuilder.create(ConveyorBeltBlockEntity::new, CONVEYOR_BELT_BLOCK).build()
     );
 
+    public static final Block MECHANICAL_ARM_BLOCK = Registry.register(
+            Registries.BLOCK,
+            Identifier.of(MOD_ID, "mechanical_arm"),
+            new MechanicalArmBlock(AbstractBlock.Settings.create()
+                    .strength(1.5f, 6.0f)
+                    .sounds(BlockSoundGroup.METAL)
+                    .nonOpaque()
+                    .requiresTool())
+    );
+
+    public static final Item MECHANICAL_ARM_ITEM = Registry.register(
+            Registries.ITEM,
+            Identifier.of(MOD_ID, "mechanical_arm"),
+            new BlockItem(MECHANICAL_ARM_BLOCK, new Item.Settings())
+    );
+
+    public static final BlockEntityType<MechanicalArmBlockEntity> MECHANICAL_ARM_BLOCK_ENTITY = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE,
+            Identifier.of(MOD_ID, "mechanical_arm"),
+            FabricBlockEntityTypeBuilder.create(MechanicalArmBlockEntity::new, MECHANICAL_ARM_BLOCK).build()
+    );
+
     @Override
     public void onInitialize() {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.REDSTONE).register(content -> {
             content.add(CONVEYOR_BELT_ITEM);
+            content.add(MECHANICAL_ARM_ITEM);
         });
     }
 }

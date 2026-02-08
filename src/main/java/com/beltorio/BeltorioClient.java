@@ -9,5 +9,6 @@ public class BeltorioClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(Beltorio.CONVEYOR_BELT_BLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Beltorio.MECHANICAL_ARM_BLOCK, RenderLayer.getCutout());
     }
 }
